@@ -1,0 +1,32 @@
+
+#include "stdafx.h"
+#include "conio.h" 
+#include "math.h" 
+#include <iostream> 
+
+using namespace std; 
+
+
+void main () 
+{int N,salariominimo=1400,i;  
+ float salariobruto, salarioneto, suma, promedio; 
+ cout<<"Ingrese el numero de trabajadores:"; 
+ cin>>N; 
+ suma=0;
+
+for(i=0;i<N;i++) 
+{ cout<<"Ingrese el salario bruto del trbajador: "; 
+  cin>>salariobruto; 
+  if(salariobruto>(2*salariominimo))
+     {salarioneto=salariobruto-(salariobruto*0.121)-(salariobruto*0.13); 
+  }
+  else 
+  { salarioneto=salariobruto-(salariobruto*0.121) ; 
+  }	 
+  suma=suma+salarioneto; 
+}
+promedio=suma/N; 
+cout<<"El promedio de los sueldos netos es:"<<promedio; 
+getch();
+
+}
