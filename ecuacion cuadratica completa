@@ -32,8 +32,8 @@ void main ()
           }  
 	   else 
 	      { cuadratica_imaginaria(a,b,c,x1,x2);
-            cout<<"X1= "<<x1<<"i"<<endl; 
-			cout<<"X2= "<<x2<<"i"<<endl;
+            cout<<"X1= "<<x1<<"+"<<x2<<"i"<<endl; 
+			cout<<"X2= "<<x1<<"-"<<x2<<"i"<<endl;
           }
    }  
    
@@ -46,6 +46,6 @@ void cuadratica (float a,float b, float c, float &x1, float &x2)
 }
 
 void cuadratica_imaginaria(float a, float b, float c, float &x1, float &x2) 
-{ x1= (-b)/(2*a)+(sqrt(-(b*b-4*a*c)))/(2*a);
-  x2= (-b)/(2*a)-(sqrt(-(b*b-4*a*c)))/(2*a);
+{ x1= (-b)/(2*a);
+  x2= (sqrt(-(b*b-4*a*c)))/(2*a);
 }
