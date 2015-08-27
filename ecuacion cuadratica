@@ -1,0 +1,37 @@
+#include "stdafx.h"
+#include "conio.h" 
+#include <iostream> 
+#include "math.h"
+
+using namespace std; 
+
+void cuadratica (float a, float b, float c, float &x1, float &x2);
+
+
+void main () 
+{ float a,b,c,x1,x2,D; 
+	
+   cout<<"Ingrese el valor de a: "<<endl; 
+   cin>>a;
+   cout<<"Ingrese el valor de b: "<<endl;
+   cin>>b; 
+   cout<<"Ingrese el valor de c: "<<endl;
+   cin>>c; 
+
+   D=(b*b)-(4*a*c);
+
+   if(D>0) 
+   { cuadratica(a,b,c,x1,x2); 
+   cout<<"X1= "<<x1<<endl; 
+   cout<<"X2= "<<x2<<endl; 
+   }
+   else 
+	   {cout<<"Error no tiene solucion real";
+   }    
+   getch();
+}
+
+void cuadratica (float a,float b, float c, float &x1, float &x2) 
+{ x1= (-b+(sqrt(b*b-4*a*c)))/(2*a); 
+  x2= (-b-(sqrt(b*b-4*a*c)))/(2*a);
+}
