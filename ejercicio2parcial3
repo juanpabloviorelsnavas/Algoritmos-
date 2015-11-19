@@ -1,0 +1,88 @@
+#include "stdafx.h"
+#include <iostream>
+#include "stdio.h"
+#include <conio.h> 
+#include <string> 
+
+using namespace std; 
+
+struct agenda { 
+	string nombre;
+	int edad;
+	string categoria; 
+}; 
+void categoria();
+void llenar();
+ 
+
+
+
+void main()
+{llenar(); 
+ categoria(); 
+ getch(); 
+
+	
+}
+
+void llenar() {
+	FILE *alias;
+	int n,i; 
+	i=0;
+    agenda reg; 
+    alias = fopen("agenda.dat","ab");
+	if(alias!=NULL)
+	{ cout<<"Ingresar numero de datos a ingresar: "; 
+	  cin>>n; 
+	  while (i<n)
+	  { cout<<"Ingrese el nombnre: "; 
+	    cin.ignore();  
+	    getline(cin,reg.nombre);
+		cout<<"Ingrese la edad: "; 
+		cin>>reg.edad; 
+		fwrite(&reg,sizeof(reg),1,alias); 
+		i++;
+	  }
+	} 
+	fclose(alias); 
+}
+
+void categoria (){ 
+	FILE *alias;
+	agenda reg; 
+	alias = fopen("agenda.dat","rb");
+	if(alias!=NULL)
+	{
+	fread(&reg,sizeof(reg),1,alias);
+	while(!feof(alias))
+	 { if(reg.edad>=0 && reg.edad<=12) 
+	    { reg.categoria="niñez"; 
+	      cout<<reg.nombre<<endl;
+		  cout<<"\t"<<reg.edad<<endl;
+		  cout<<"\t"<<reg.categoria<<endl; 
+	    }
+	   if(reg.edad>=13 && reg.edad<=21) 
+	    { reg.categoria="juventud"; 
+	      cout<<reg.nombre<<endl;
+		  cout<<"\t"<<reg.edad<<endl;
+		  cout<<"\t"<<reg.categoria<<endl; 
+	    }
+	   if(reg.edad>=22 && reg.edad<=70) 
+	    { reg.categoria="adultez"; 
+	      cout<<reg.nombre<<endl;
+		  cout<<"\t"<<reg.edad<<endl;
+		  cout<<"\t"<<reg.categoria<<endl; 
+	    }
+       if(reg.edad>70) 
+	    { reg.categoria="ancianidad"; 
+	      cout<<reg.nombre<<endl;
+		  cout<<"\t"<<reg.edad<<endl;
+		  cout<<"\t"<<reg.categoria<<endl; 
+	    }
+	   fread(&reg,sizeof(reg),1,alias);
+
+	}
+
+}
+	fclose(alias);
+}
